@@ -40,4 +40,8 @@ public class Odeme {
         System.out.println("Tarih: " + odemeTarihi);
         System.out.println("Onay Durumu: " + (onaylandiMi ? "Evet" : "Hayır"));
     }
+
+    public double getTutar() {
+        return tutar;
+    }
 }

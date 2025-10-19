@@ -53,4 +53,7 @@ public class Urun {
     public int getStokAdedi() {
         return stokAdedi;
     }
+    public int getUrunId() {
+        return urunId;
+    }
 }

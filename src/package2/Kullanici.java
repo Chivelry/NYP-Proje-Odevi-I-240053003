@@ -51,4 +51,7 @@ public class Kullanici {
     public String getKullaniciAdi() {
         return kullaniciAdi;
     }
+    public List<Adres> getAdresler(){
+        return adresler;
+    }
 }
