@@ -1,27 +1,42 @@
 package package1;
+/**
+ * Ev, ofis veya dış mekanlarda kullanılan aydınlatma
+ * cihazlarının (ampul, armatür vb.) temel özelliklerini temsil eden sınıf.
+ */
 public class Lamba {
-    private int guc;
-    private int renkSicakligi;
-    private int parlaklik;
-    private boolean acikMi;
-
+    // --- Özellikler ---
+    private int guc;            // Güç tüketimi (Watt)
+    private int renkSicakligi;  // Işık renginin sıcaklığı (Kelvin, Örn: 3000K)
+    private int parlaklik;      // Mevcut parlaklık seviyesi (0-100%)
+    private boolean acikMi;     // Lambanın yanıp yanmadığı (true: Açık, false: Kapalı)
+    /**
+     * Lamba sınıfının kurucu metodu.
+     * Lambanın temel statik özelliklerini (güç, renk sıcaklığı) ayarlar.
+     */
     public Lamba(int guc, int renkSicakligi) {
         this.guc = guc;
         this.renkSicakligi = renkSicakligi;
-        this.parlaklik = 0;
+        this.parlaklik = 0; // Başlangıçta parlaklık sıfır (kapalı)
         this.acikMi = false;
     }
-
+    // --- Davranışlar (Metotlar)---
+    /**
+     * Lambayı açma işlemini gerçekleştirir.
+     * Açılırken parlaklığı %100 yapar.
+     */
     public void Ac() {
         if (!acikMi) {
             acikMi = true;
-            parlaklik = 100;
+            parlaklik = 100; // Açılınca tam parlaklıkta başlasın.
             System.out.println("Lamba açıldı. Tam parlaklıkta yanıyor.");
         } else {
             System.out.println("Lamba zaten açık.");
         }
     }
-
+    /**
+     * Lambayı kapatma işlemini gerçekleştirir.
+     * Kapanınca parlaklığı 0 yapar.
+     */
     public void Kapat() {
         if (acikMi) {
             acikMi = false;
@@ -31,7 +46,11 @@ public class Lamba {
             System.out.println("Lamba zaten kapalı.");
         }
     }
-
+    /**
+     * Lambanın parlaklık seviyesini ayarlar.
+     * Sadece lamba açıkken çalışır ve seviye 0-100 arasında olmalıdır.
+     * @param seviye Ayarlanmak istenen parlaklık yüzdesi.
+     */
     public void ParlaklikAyarla(int seviye) {
         if (acikMi) {
             if (seviye >= 0 && seviye <= 100) {
@@ -44,7 +63,9 @@ public class Lamba {
             System.out.println("Lamba kapalı, parlaklık ayarlanamaz. Önce açın.");
         }
     }
-
+    /**
+     * Lambanın mevcut durumunu ve temel özelliklerini konsola yazdırır.
+     */
     public void DurumuYazdir() {
         System.out.println("\n--- Lamba Durumu ---");
         System.out.println("Durum: " + (acikMi ? "Açık" : "Kapalı"));

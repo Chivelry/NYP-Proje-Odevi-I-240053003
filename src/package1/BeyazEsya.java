@@ -1,21 +1,33 @@
 package package1;
+/**
+ * Beyaz eşya ürünlerinin (buzdolabı, çamaşır makinesi vb.)
+ * ortak özelliklerini ve temel davranışlarını temsil eden ana sınıf.
+ */
 public class BeyazEsya {
-    String marka; //Arçelik veya Beko
+    // --- Özellikler ---
+    String marka;
     String model;
-    String enerjiSinifi; //Enerji Verimlilik (A++ veya B gibi)
+    String enerjiSinifi;    // Enerji Verimlilik Sınıfı (Örn: A++, B)
     double fiyat;
-    int garantiSuresi; //Yıllık
-    boolean durum; //Açık veya Kapalı
-
+    int garantiSuresi;      // Garanti süresi (yıl olarak)
+    boolean durum;          // Cihazın mevcut çalışma durumu (true: Açık, false: Kapalı)
+    /**
+     * BeyazEsya sınıfının kurucu (constructor) metodu.
+     * Yeni bir BeyazEsya nesnesi oluşturulurken gerekli temel bilgileri alır.
+     */
     public BeyazEsya(String marka, String model, String enerjiSinifi, double fiyat, int garantiSuresi) {
         this.marka = marka;
         this.model = model;
         this.enerjiSinifi = enerjiSinifi;
         this.fiyat = fiyat;
         this.garantiSuresi = garantiSuresi;
-        this.durum = false; // Başlangıçta kapalı
+        this.durum = false; // Bütün cihazlar başlangıçta kapalı olarak ayarlanır.
     }
-
+    // --- Davranışlar (Metotlar)---
+    /**
+     * Cihazın açılma işlemini gerçekleştirir.
+     * Cihaz kapalıysa durumunu 'açık' olarak değiştirir.
+     */
     public void CihazAc() {
         if (!durum) {
             durum = true;
@@ -24,7 +36,10 @@ public class BeyazEsya {
             System.out.println(marka + " " + model + " zaten açık.");
         }
     }
-
+    /**
+     * Cihazın kapatılma işlemini gerçekleştirir.
+     * Cihaz açıksa durumunu 'kapalı' olarak değiştirir.
+     */
     public void CihazKapa() {
         if (durum) {
             durum = false;
@@ -33,7 +48,9 @@ public class BeyazEsya {
             System.out.println(marka + " " + model + " zaten kapalı.");
         }
     }
-
+    /**
+     * Beyaz eşyanın tüm özelliklerini konsola yazdırır.
+     */
     public void BilgileriGoster() {
         System.out.println("--- Cihaz Bilgileri ---");
         System.out.println("Marka: " + marka);
