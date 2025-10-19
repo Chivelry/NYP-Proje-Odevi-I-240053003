@@ -25,18 +25,9 @@ package package2;
         public String getAdresBasligi() {
             return adresBasligi;
         }
-        public String getIl() {
-            return il;
-        }
-        public String getIlce() {
-            return ilce;
-        }
-        public String getAcikAdres() {
-            return acikAdres;
-        }
         @Override
         public String toString() {
             return adresBasligi + " (" + il + "/" + ilce + ")";
         }
     }
-}
+

@@ -44,25 +44,13 @@ public class Urun {
     }
 
     // Getter metotları
-    public int getUrunId() {
-        return urunId;
-    }
-
     public String getAd() {
         return ad;
-    }
-
-    public String getAciklama(){
-        return aciklama;
     }
     public double getFiyat() {
         return fiyat;
     }
-
     public int getStokAdedi() {
         return stokAdedi;
-    }
-    public Kategori getKategori() {
-        return kategori;
     }
 }

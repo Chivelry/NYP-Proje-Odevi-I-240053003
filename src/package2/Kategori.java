@@ -9,9 +9,6 @@ public class Kategori {
         this.ad = ad;
     }
     // Getter metotları
-    public int getKategoriId() {
-        return kategoriId;
-    }
     public String getAd() {
         return ad;
     }

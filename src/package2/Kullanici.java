@@ -51,16 +51,4 @@ public class Kullanici {
     public String getKullaniciAdi() {
         return kullaniciAdi;
     }
-    public List<Adres> getAdresler() {
-        return adresler;
-    }
-    public int getKullaniciId() {
-        return kullaniciId;
-    }
-    public String getSifre() {
-        return sifre;
-    }
-    public String getEmail() {
-        return email;
-    }
 }
