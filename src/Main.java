@@ -1,6 +1,6 @@
 import package1.*;
+import package2.*;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -31,21 +31,24 @@ public class Main {
                         HayvanSecenek();
                         break;
                     case 3:
+                        LambaSecenek();
                         break;
                     case 4:
+                        TopSecenek();
                         break;
                     case 5:
+                        TornavidaSecenek();
                         break;
                     case 6:
                         paketSecenek = 2;
                         break;
                     case 7:
-                        continue;
+                        break;
                     default:
                         System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
                 }
             }
-            else if (paketSecenek ==2) {
+            else if (paketSecenek == 2) {
                 System.out.println("------------------------------------");
                 System.out.println("---------- Paket2 Seçenek Ekranı ----------");
                 System.out.println("7. Çıkış");
@@ -72,7 +75,6 @@ public class Main {
                         System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
                 }
             }
-
         }
     }
     public static void BeyazEsyaSecenek() {
@@ -149,13 +151,11 @@ public class Main {
                     }
                     break;
                 case 5:
-                    continue;
+                    break;
                 default:
                     System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
             }
         }
-
-        scanner.close(); // Scanner nesnesini kapatmayı unutmayın
     }
     public static void HayvanSecenek() {
         Scanner scanner = new Scanner(System.in);
@@ -167,7 +167,7 @@ public class Main {
             System.out.println("------ Hayvan Seçenekleri ------");
             System.out.println("1. Hayvan Oluştur");
             System.out.println("2. Oluşturulan Hayvanın Özelliklerini Göster");
-            System.out.println("3. Oluşturulan Hayvana Yemek (Elma) Yedir");
+            System.out.println("3. Oluşturulan Hayvana Yemek Yedir");
             System.out.println("4. Oluşturulan Hayvana Ses Çıkarttır");
             System.out.println("5. Oluşturulan Hayvanı Uyandır Veya Uyut");
             System.out.println("6. Geri Dön (Geri Dönmek Hayvanı Siler)");
@@ -179,6 +179,9 @@ public class Main {
                 case 1:
                     // 1. Kullanıcıdan verileri oku
                     System.out.print("Türü girin: ");
+
+                    scanner.nextLine();
+
                     String h_tur = scanner.nextLine();
 
                     System.out.print("Adını girin: ");
@@ -209,8 +212,9 @@ public class Main {
                     break;
                 case 3:
                     if(hayvan) {
-                        String elma = "Elma";
-                        yeniHayvan.YemekYe(elma);
+                        Scanner yemekScanner = new Scanner(System.in);
+                        String yemek = yemekScanner.nextLine();
+                        yeniHayvan.YemekYe(yemek);
                     }
                     else {
                         System.out.println("Önce hayvan oluşturmanız gerekmektedir.");
@@ -238,6 +242,272 @@ public class Main {
                     System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
             }
         }
-        scanner.close(); // Scanner nesnesini kapatmayı unutmayın
+    }
+    public static void LambaSecenek() {
+        Scanner scanner = new Scanner(System.in);
+        boolean lamba = false;
+        Lamba yeniLamba = null;
+        int secenek = 0;
+        while(secenek != 6) {
+            System.out.println("------------------------------------");
+            System.out.println("------ Lamba Seçenekleri ------");
+            System.out.println("1. Lamba Oluştur");
+            System.out.println("2. Oluşturulan Lambanın Durumunu Göster");
+            System.out.println("3. Oluşturulan Lambayı Aç");
+            System.out.println("4. Oluşturulan Lambayı Kapa");
+            System.out.println("5. Oluşturulan Lambanın Parlaklık Seviyesini Belirle");
+            System.out.println("6. Geri Dön (Geri Dönmek Lambayı Siler)");
+            System.out.println("------------------------------------");
+
+            secenek = scanner.nextInt();
+
+            switch (secenek) {
+                case 1:
+                    // 1. Kullanıcıdan verileri oku
+                    System.out.print("Gücü girin: ");
+
+                    scanner.nextLine();
+
+                    int l_guc = scanner.nextInt();
+
+                    System.out.print("Renk sıcaklığını girin: ");
+                    int l_renkSicakligi = scanner.nextInt();
+
+                    // Scanner nextInt veya nextDouble'dan sonra yeni satırı okumaz.
+                    // nextLine() çağırarak bu sorunu çözüyoruz.
+                    scanner.nextLine();
+
+                    // 2. Constructor kullanarak objeyi oluştur
+                    yeniLamba = new Lamba(l_guc, l_renkSicakligi);
+
+                    System.out.println("\nLambanız oluşturuldu.");
+                    lamba = true;
+                    break;
+                case 2:
+                    if(lamba) {
+                        yeniLamba.DurumuYazdir();
+                    }
+                    else {
+                        System.out.println("Önce lamba oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 3:
+                    if(lamba) {
+                        yeniLamba.Ac();
+                    }
+                    else {
+                        System.out.println("Önce lamba oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 4:
+                    if(lamba) {
+                        yeniLamba.Kapat();
+                    }
+                    else {
+                        System.out.println("Önce lamba oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 5:
+                    if(lamba) {
+                        Scanner seviyeScanner = new Scanner(System.in);
+                        System.out.print("Parlaklık seviyesi belirleyin (1-100): ");
+                        int seviye = scanner.nextInt();
+                        yeniLamba.ParlaklikAyarla(seviye);
+                    }
+                    else {
+                        System.out.println("Önce lamba oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
+            }
+        }
+    }
+    public static void TopSecenek() {
+        Scanner scanner = new Scanner(System.in);
+        boolean top = false;
+        Top yeniTop = null;
+        int secenek = 0;
+        while(secenek != 6) {
+            System.out.println("------------------------------------");
+            System.out.println("------ Top Seçenekleri ------");
+            System.out.println("1. Top Oluştur");
+            System.out.println("2. Oluşturulan Topun Özelliklerini Göster");
+            System.out.println("3. Oluşturulan Topu Yuvarla");
+            System.out.println("4. Oluşturulan Topu Şişir");
+            System.out.println("5. Oluşturulan Topun Sektir");
+            System.out.println("6. Geri Dön (Geri Dönmek Topu Siler)");
+            System.out.println("------------------------------------");
+
+            secenek = scanner.nextInt();
+
+            switch (secenek) {
+                case 1:
+                    // 1. Kullanıcıdan verileri oku
+                    System.out.print("Tipini girin: ");
+
+                    scanner.nextLine();
+
+                    String t_tip = scanner.nextLine();
+
+                    System.out.print("Çapını girin: ");
+                    double t_cap = scanner.nextDouble();
+
+                    System.out.print("Ağırlığını girin: ");
+                    double t_agirlik = scanner.nextDouble();
+
+                    System.out.print("Basıncını girin: ");
+                    double t_basinc = scanner.nextDouble();
+
+                    // Scanner nextInt veya nextDouble'dan sonra yeni satırı okumaz.
+                    // nextLine() çağırarak bu sorunu çözüyoruz.
+                    scanner.nextLine();
+
+                    // 2. Constructor kullanarak objeyi oluştur
+                    yeniTop = new Top(t_tip,t_cap,t_agirlik,t_basinc);
+
+                    System.out.println("\nTopunuz oluşturuldu.");
+                    top = true;
+                    break;
+                case 2:
+                    if(top) {
+                        yeniTop.OzellikleriGoster();
+                    }
+                    else {
+                        System.out.println("Önce top oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 3:
+                    if(top) {
+                        yeniTop.Yuvarlan();
+                    }
+                    else {
+                        System.out.println("Önce top oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 4:
+                    if(top) {
+                        Scanner basicScanner = new Scanner(System.in);
+                        System.out.print("Şişirmek için basınç belirle: ");
+                        int basincMiktar = scanner.nextInt();
+                        yeniTop.Sisir(basincMiktar);
+                    }
+                    else {
+                        System.out.println("Önce top oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 5:
+                    if(top) {
+                        Scanner kuvvetScanner = new Scanner(System.in);
+                        System.out.print("Sektirmek için kuvvet belirle: ");
+                        int kuvvet = kuvvetScanner.nextInt();
+                        yeniTop.Sicra(kuvvet);
+                    }
+                    else {
+                        System.out.println("Önce top oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
+            }
+        }
+    }
+    public static void TornavidaSecenek() {
+        Scanner scanner = new Scanner(System.in);
+        boolean tornavida = false;
+        Tornavida yeniTornavida = null;
+        int secenek = 0;
+        while(secenek != 6) {
+            System.out.println("------------------------------------");
+            System.out.println("------ Tornavida Seçenekleri ------");
+            System.out.println("1. Tornavida Oluştur");
+            System.out.println("2. Oluşturulan Tornavidanın Özelliklerini Göster");
+            System.out.println("3. Oluşturulan Tornavidayı Sık");
+            System.out.println("4. Oluşturulan Tornavidayı Gevşet");
+            System.out.println("5. Oluşturulan Tornavidanın İzolasyonunu Kontrol Et");
+            System.out.println("6. Geri Dön (Geri Dönmek Tornavidayı Siler)");
+            System.out.println("------------------------------------");
+
+            secenek = scanner.nextInt();
+
+            switch (secenek) {
+                case 1:
+                    // 1. Kullanıcıdan verileri oku
+                    System.out.print("Tipini girin: ");
+
+                    scanner.nextLine();
+
+                    String tv_tip = scanner.nextLine();
+
+                    System.out.print("Malzeme girin: ");
+
+                    scanner.nextLine();
+
+                    String tv_malzeme = scanner.nextLine();
+
+                    System.out.print("Sap rengi girin: ");
+
+                    scanner.nextLine();
+
+                    String tv_sapRengi = scanner.nextLine();
+
+                    System.out.print("Uzunluk girin: ");
+                    double tv_uzunluk = scanner.nextDouble();
+
+                    System.out.print("İzolasyonlu mu? (true/false): ");
+                    boolean tv_izolasyon = scanner.nextBoolean();
+
+                    // Scanner nextInt veya nextDouble'dan sonra yeni satırı okumaz.
+                    // nextLine() çağırarak bu sorunu çözüyoruz.
+                    scanner.nextLine();
+
+                    // 2. Constructor kullanarak objeyi oluştur
+                    yeniTornavida = new Tornavida(tv_tip,tv_uzunluk,tv_malzeme,tv_izolasyon,tv_sapRengi);
+
+                    System.out.println("\nTornavidanız oluşturuldu.");
+                    tornavida = true;
+                    break;
+                case 2:
+                    if(tornavida) {
+                        yeniTornavida.OzellikleriGoster();
+                    }
+                    else {
+                        System.out.println("Önce tornavida oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 3:
+                    if(tornavida) {
+                        yeniTornavida.Sık();
+                    }
+                    else {
+                        System.out.println("Önce tornavida oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 4:
+                    if(tornavida) {
+                        yeniTornavida.Gevset();
+                    }
+                    else {
+                        System.out.println("Önce tornavida oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 5:
+                    if(tornavida) {
+                        yeniTornavida.IzolasyonuKontrolEt();
+                    }
+                    else {
+                        System.out.println("Önce tornavida oluşturmanız gerekmektedir.");
+                    }
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Üzgünüm! Girdiğiniz değer seçeneklerle uyuşmamaktadır.");
+            }
+        }
     }
 }
